@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <title>code-test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet/less" type="text/css" href="css/main.less" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js" ></script>
+        
+    </head>
+    <body>
+        <div id="articles"></div>
+    </body>
+</html>
+
+<!-- template for article list -->
+<script id="articles_tpl" type="text/html">
+    <div class="item">
+        <div class="summary">
+            <div class="sectionname">
+                {{primarySectionRouteName}}
+            </div>
+            <div class="headline">
+                <a href="{{link}}" target="_blank">{{headline}}</a>
+            </div>
+            <div class="standfirst">
+                {{standfirst}}
+            </div>
+        </div>
+        <div class="thumbnail">
+            <a href="{{link}}" target="_blank">
+                <img src="{{thumbnail.src}}" title="{{thumbnail.title}}" width="{{thumbnail.width}}" height="{{thumbnail.height}}">
+            </a>
+        </div>
+    </div>
+</script>
+<!-- /template for article list -->
+
+<script src="js/template-web.js"></script>
+<script src="js/main.js"></script>
+<script>
+    get('/json/code-test.json',(res) => {
+        let data = JSON.parse(res);
+        let articles = data['articles'];
+        let htmlArray = [];
+        articles.forEach((v) =>{
+            htmlArray.push(template("articles_tpl",v));
+        })
+        let html = htmlArray.join('');
+        document.getElementById("articles").innerHTML = html;
+    });
+</script>

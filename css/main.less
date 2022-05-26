@@ -1,0 +1,51 @@
+body{
+    background-color: #fff;
+    border:0;
+    margin:0;
+    font-size:16px;
+}
+
+#articles{
+    width:1000px;
+    border:1px solid #ddd;
+    margin:20px auto;
+    .item{
+        padding:10px;
+        border-bottom:1px dashed #ddd;
+        width:98%;
+        margin:0 auto;
+        display: flex;
+        .summary{
+            width:650px;
+            line-height:30px;
+            .sectionname{
+                font-size:18px;
+                color:#0059bf
+            }
+            .headline{
+                padding-top:30px;
+                font-size:25px;
+                font-family:Georgia;
+                color:#000000;
+                a{
+                    text-decoration: none;
+                    color:#000000;
+                }
+                a:hover{
+                    color:#0059bf;
+                }
+            }
+            .standfirst{
+                padding-top:10px;
+                color:#606669;
+            }
+        }
+        .thumbnail{
+            text-align: center;
+            width:350px;
+            img{
+                border-radius: 10px
+            }
+        }
+    }
+}
